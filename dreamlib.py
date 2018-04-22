@@ -4,8 +4,10 @@ from time import sleep
 from random import random
 from math import sin,cos
 import sys
+
 class swirl:
 	def __init__(self,pos=(100,100),radius=10,center=(500,250),omega=random()*0.09,angle=90,color=(255,100,0),radius_mod=1,mod_max=200,width=5):
+		self.niceness = 0
 		self.pos = pos
 		self.r = radius
 		self.omega = omega
