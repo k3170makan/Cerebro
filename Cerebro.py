@@ -10,20 +10,6 @@ from optparse import OptionParser
 	by Keith Makan
 
 	License GPL
-
-	TODO:
-		1 - check out timing between eeg packet events
-			: - do I need to seperate callbacks into different threads? all call backs into single thread?
-			: - do I need to stack up packets? can I do band pass filtering in time?
-		2 - once we have timing data starting building thread cycle
-				1 - get eeg packet (server thread needs to signal when its done with a packet)
-					* - probably need a server thread? does it need to run all the time?
-				2 - calculate alpha 
-					* - calculationso on main thread?
-				3 - add to animation
-					* - perhaps the display thread must just be seperate? 
-						[?] - display thread checks an array to see if it must update the animation
-								array has a sequence number for each packet so it knows which one its displayed already?
 """	
 
 def eeg_callback(path, args,types,src,data):
