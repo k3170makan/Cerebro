@@ -1,7 +1,7 @@
 # Cerebro : PROJECT IN PROGRESS
 ![alt text](https://raw.githubusercontent.com/k3170makan/Cerebro/master/loading_screen2.png "loading screen")
 
-##Brain art with raspberrypi and Mind Muse EEG
+## Brain art with raspberrypi and Mind Muse EEG
 Cerebro is a digital mandala generator. It generates a mandala using
 a pygame animation that evolves through color stages according to how relaxed you are. Some examples are shown below.
 
