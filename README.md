@@ -35,18 +35,15 @@ and there also a usefull amount of info about it too!).
 
 You should see a screen like this show up:
 	 	
-DISCLAIMER: There's about a minute delay right now in getting it
-	connected this, I'm working on getting around this.
+	DISCLAIMER: There's about a minute delay right now in getting it connected this, I'm working on getting around this.
 
-Currently the idea is to meditate for a minute or so as deeply 
-	as possible,either staring at the screen of your pi OR with 
-	your eyes closed.
+Currently the idea is to meditate for a couple minutes or so as deeply as possible,either staring at the screen of your pi OR with your eyes closed.
 
-	After a minute or so you should see the state of your brain on the
-	screen a minute ago - this is due to the delay. Although this ironically
-	turns out to be an ideal mode of use for deep meditation, since you can
-	only meditate so deeply with your eyes open :) and you wouldn't be able
-	to see the spectacular art you're making then!!
+After a minute or so you should see the state of your brain on the
+screen a minute ago - this is due to the delay. Although this ironically
+turns out to be an ideal mode of use for deep meditation, since you can
+only meditate so deeply with your eyes open :) and you wouldn't be able
+to see the spectacular art you're making then!!
 
 ### Using the Cerebro Stock Mandala
 
