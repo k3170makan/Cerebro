@@ -14,9 +14,10 @@ EEG Artists) so they can get in on the action!*
 ### Setting up Cerebro for Raspberry Pi
 In order to get Cerebro going on your raspberry pi, all you need to do is
 make sure you do these:
-	1. Install Muse Monitor for Android
-	2. Install pygame, python-liblo
-	3. Grab a copy of the Cerebro Github project
+
+1. Install Muse Monitor for Android
+2. Install pygame, python-liblo
+3. Grab a copy of the Cerebro Github project
 
 ### Running and Visualizing your relaxtion state
 	You should now be good to go, the following runs cerebro and syncs with
@@ -73,16 +74,15 @@ Here's a couple of stuff I'm going to work on getting done in future in
 case you where thinking of going off your own tangent in some ways i 
 thought might be interesting ;) Happy thought hacking!!
 
-	1. FINISH THE TODO LIST lol
-	2. Add a replay and record mode - simple mode that plays your data back
+1. FINISH THE TODO LIST lol
+2. Add a replay and record mode - simple mode that plays your data back
 		using a swirl you implement or the stock one included
-	3. Design implement swirl scripting API (possibly design an "inteface" to a swirl object definition so it can be scripted in certain ways)
-	4. Design arb game buliding api
-	5. implement api to hook into physical actuations pump out events like:
-		* ideal (the user is attaning a good state)
-		* negative (the user is moving away from ideal state)
-		* maintain (keep the progress in the game steady)
-		commands that the acutation handles in its own way. 
+3. Design implement swirl scripting API (possibly design an "inteface" to a swirl object definition so it can be scripted in certain ways)
+4. Design arb game buliding api
+5. implement api to hook into physical actuations pump out events like:
+	* ideal (the user is attaning a good state)
+	* negative (the user is moving away from ideal state)
+	* maintain (keep the progress in the game steady) commands that the acutation handles in its own way. 
 	
 	example: a game where a user fills a cup to overflowing to win
 			* ideal : full/overflowing cup
