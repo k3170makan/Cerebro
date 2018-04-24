@@ -66,17 +66,16 @@ turn gold and look like this:
 
 Good luck and relax its easy :)!
 
-####Cerbro Swirl Actuation tutorial
-- finish later: simple advice is relax mediate and take little breaks here
-	and there to check your progress with the mandala
-
 ### Depedencies
-Cerebro is a project that ties together 3 things:
-	* Mind Muse EEG 2016
-	* Muse Monitor for Android
-	* PyGame
-	* Raspberry Pi
-	* liblo OSC for Python
+Cerebro is a project that ties together a couple things:
+* Mind Muse EEG 2016 : https://www.amazon.com/Muse-Brain-Sensing-Headband-Black/dp/B00LOQR37C
+* Muse Monitor for Android : https://play.google.com/store/apps/details?id=com.sonicPenguins.museMonitor
+* PyGame :  https://www.pygame.org/news
+* Raspberry Pi : https://www.raspberrypi.org/
+* liblo OSC for Python: http://das.nasophon.de/pyliblo/
+
+You need to get a muse device, ill add support for more as the need arises. But for now all is support is the Muse 2016, its as far as i know the most
+bang for your buck in the dry electrode eeg game ;)
 
 ### TODO
 Here's a couple of stuff I'm going to work on getting done in future in
