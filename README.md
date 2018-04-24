@@ -1,8 +1,9 @@
 # Cerebro : PROJECT IN PROGRESS
-## Brain art with raspberrypi and Mind Muse EEG
+![alt text] (https://github.com/k3170makan/Cerebro/loading_screen2.png)
+
+##Brain art with raspberrypi and Mind Muse EEG
 Cerebro is a digital mandala generator. It generates a mandala using
 a pygame animation that evolves through color stages according to how relaxed you are. Some examples are shown below.
-
 
 *This is a fun little, personal project of mine, its still a bit
 clunky but it works to some extent, I'm sharing it here for those 
@@ -19,26 +20,25 @@ make sure you do these:
 3. Grab a copy of the Cerebro Github project
 
 ### Running and Visualizing your relaxtion state
-	You should now be good to go, the following runs cerebro and syncs with
-	the mind muse
-	1. Launch the Muse Monitor app on your Android, configure the
-			OSC Streaming options to hit your Raspberry Pi.
-	2.  Run it here's an example of a simple configuration that will use your alpha and delta waves to actuate - other modes have not been implemented yet
+You should now be good to go, the following runs cerebro and syncs with
+the mind muse
+1. Launch the Muse Monitor app on your Android, configure the OSC Streaming options to hit your Raspberry Pi.
+2. Run it here's an example of a simple configuration that will use your alpha and delta waves to actuate - other modes have not been implemented yet
 
 		```
 			./Cerebro_dreamlib.py --alpha --delta --port 5000 --sprits 250
 		```
-		This will spin up a Cerebro instance that hosts a UDP server on
-		port 5000 for data from the muse monitor app (this app follows the
-		MuseIO data standard so there's tons of things you can pull from it
-		and there also a usefull amount of info about it too!). 
+This will spin up a Cerebro instance that hosts a UDP server on
+port 5000 for data from the muse monitor app (this app follows the
+MuseIO data standard so there's tons of things you can pull from it
+and there also a usefull amount of info about it too!). 
 
-		You should see a screen like this show up:
+You should see a screen like this show up:
 	 	
-	DISCLAIMER: There's about a minute delay right now in getting it
+DISCLAIMER: There's about a minute delay right now in getting it
 	connected this, I'm working on getting around this.
 
-	Currently the idea is to meditate for a minute or so as deeply 
+Currently the idea is to meditate for a minute or so as deeply 
 	as possible,either staring at the screen of your pi OR with 
 	your eyes closed.
 
