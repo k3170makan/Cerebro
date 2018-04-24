@@ -6,7 +6,18 @@ from math import sin,cos
 import sys
 
 class swirl:
-	def __init__(self,pos=(100,100),radius=10,center=(500,250),omega=random()*0.09,angle=90,color=(255,100,0),radius_mod=1,mod_max=200,width=5):
+	def __init__(self,pos=(100,100),
+							radius=10,
+							center=(500,250),
+							omega=random()*0.09,
+							angle=90,
+							color=(255,100,0),
+							radius_mod=1,
+							mod_max=200,
+							width=6,
+							trail_len=5,
+							sparkle=True):
+		self.color_init = color
 		self.niceness = 0
 		self.pos = pos
 		self.r = radius
@@ -17,9 +28,16 @@ class swirl:
 		self.radius_mod = radius_mod 
 		self.radius_mod_max = mod_max
 		self.width = width
+		self.sparkle = sparkle
+		self.trail = [ swirl(center=self.pos,color=(255,255,255),
+									width=2,
+									radius=2,
+									angle=self.angle,
+									omega=self.omega,sparkle=True,trail_len=0) for i in range(trail_len)]
+
 	def pulse_radius(self):
 		if (int(random()*100)%5) == 1:
-			self.r += random()*5*((0.8,0.15)[int(random()*10)%2])
+			self.r += random()*5*((0.9,0.3)[int(random()*10)%2])
 	def move_circle(self,radius_mod=1):
 		self.angle += self.omega
 		self.pos = ((int(self.center[0]-(cos(self.angle) * (self.r*radius_mod)))),(int(self.center[1]-(sin(self.angle) * (self.r*radius_mod)))))
@@ -40,7 +58,19 @@ class swirl:
 		self.move_circle(radius_mod=self.radius_mod)
 	def draw_swirl(self,screen):
 			#need to check for pygame import errors perhaps
-			pygame.draw.circle(screen,self.color,self.pos,self.width)
+			if self.sparkle:
+				pygame.draw.circle(screen,self.color,self.pos,int(self.width*1.3*random()))
+			else:	
+				pygame.draw.circle(screen,self.color,self.pos,self.width)
+			if len(self.trail)> 0:
+				for swirl in self.trail:
+					swirl.center = self.pos
+					swirl.color = self.color
+					swirl.radius = 1
+					swirl.width = 1
+					swirl.r = 1 
+					swirl.move_circle()
+					swirl.draw_swirl(screen)
 def gen_random_swirl():
 	return swirl(color=gen_random_color(base=(255,255,255)),radius=int(100 + random()*20),omega=random()*0.09,pos=(int(random()*10 + 1) + 100, int(random()*10 + 1) + 100),mod_max=400) 
 def gen_random_color(base=(1,1,1)):

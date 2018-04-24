@@ -12,20 +12,6 @@ import pygame
 	by Keith Makan
 
 	License GPL
-
-	TODO:
-		1 - check out timing between eeg packet events
-			: - do I need to seperate callbacks into different threads? all call backs into single thread?
-			: - do I need to stack up packets? can I do band pass filtering in time?
-		2 - once we have timing data starting building thread cycle
-				1 - get eeg packet (server thread needs to signal when its done with a packet)
-					* - probably need a server thread? does it need to run all the time?
-				2 - calculate alpha 
-					* - calculationso on main thread?
-				3 - add to animation
-					* - perhaps the display thread must just be seperate? 
-						[?] - display thread checks an array to see if it must update the animation
-								array has a sequence number for each packet so it knows which one its displayed already?
 """	
 
 def eeg_callback(path, args,types,src,data):
@@ -45,7 +31,7 @@ def delta_callback(path,args,types,src,data):
 	delta_level = args[0]
 	packet_index += 1
 	active = True
-	#print("%d %s" % (packet_index,args[0]))
+	print("delta:\t%d %s" % (packet_index,args[0]))
 
 def alpha_callback(path,args,types,src,data):
 	global active
@@ -55,7 +41,7 @@ def alpha_callback(path,args,types,src,data):
 	active = True
 	alpha_level = args[0]
 
-	print("%d %s" % (packet_index,args[0]))
+	print("alpha:\t%d %s" % (packet_index,args[0]))
 
 def log_args(args):
 	for arg in args:
@@ -145,19 +131,19 @@ if __name__ == "__main__":
 
 	if options.sprites:
 		sprites = options.sprites
-		swirls = [swirl(color=(255 - int(50*random()),255 - int(50*random()),255 - int(50*random())),width=(10 + int(random()*5)),radius=int(100 + random()*20),omega=random()*0.09,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites)]
-		swirls += [swirl(color=(255 - int(100*random()),255 - int(100*random()),255 - int(100*random())),width=(7 + int(random()*2)),radius=int(50 + random()*20),omega=random()*0.09,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites/2)]
-		swirls += [swirl(color=(255 - int(200*random()),255 - int(200*random()),255 - int(200*random())),width=(5 + int(random()*2)),radius=int(20 + random()*5),omega=random()*0.09,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites/4)]
+		swirls = [swirl(color=(255 - int(50*random()),255 - int(50*random()),255 - int(50*random())),width=(10 + int(random()*5)),radius=int(100 + random()*20),omega=random()*0.05,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites)]
+		swirls += [swirl(color=(255 - int(100*random()),255 - int(100*random()),255 - int(100*random())),width=(7 + int(random()*2)),radius=int(50 + random()*20),omega=random()*0.06,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites/2)]
+		swirls += [swirl(color=(255 - int(200*random()),255 - int(200*random()),255 - int(200*random())),width=(5 + int(random()*2)),radius=int(20 + random()*5),omega=random()*0.07,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites/4)]
 	else:
 		sprites = 100
 		swirls = [swirl(color=(255 - int(50*random()),255 - int(50*random()),255 - int(50*random())),radius=int(100 + random()*20),omega=random()*0.06,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites)]
 		swirls += [swirl(color=(255 - int(100*random()),255 - int(100*random()),255 - int(100*random())),radius=int(50 + random()*20),omega=random()*0.07,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites/2)]
-		swirls += [swirl(color=(255 - int(200*random()),255 - int(200*random()),255 - int(200*random())),radius=int(20 + random()*5),omega=random()*0.08,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites/3)]
+		swirls += [swirl(trail_len=2,color=(255 - int(200*random()),255 - int(200*random()),255 - int(200*random())),radius=int(20 + random()*5),omega=random()*0.08,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites/3)]
 	
 	alpha_level = 0
 	delta_level = 0
-	sprites = 500
-	loading_swirls = [swirl(width=int(5 + random()*2),color=(255 - int(200*random()),255 - int(200*random()),255 - int(200*random())),radius=int(10 + random()*5),omega=random()*0.07,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites)]
+	sprites = 150
+	loading_swirls = [swirl(sparkle=True,trail_len=2,width=int(5 + random()*2),color=(255 - int(200*random()),255 - int(200*random()),255 - int(200*random())),radius=int(10 + random()*5),omega=random()*0.07,pos=(int(random()*10 + 1) + 50, int(random()*10 + 1) + 50),mod_max=400) for i in range(sprites)]
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -182,24 +168,46 @@ if __name__ == "__main__":
 				["|","/","-","\\"][int(wait_index%4)]))
 			wait_index += 1
 		if active:
-			for swirl in swirls:
+			for index,swirl in enumerate(swirls):
 				if int(random()*100)%5 == 1:
 					if options.delta:
-						#swirl.move_circle(radius_mod=1.5 - delta_level)
-						if int(130 - delta_level*100) > 15:
-							swirl.move_ellipse(l=0.5+delta_level,r=0.5+delta_level)
+						if int(delta_level*100) > 80: #bad case
+							swirl.move_circle(radius_mod=(0.3 + delta_level))
+							swirl.color = (swirl.color[0] + int( random()*(10 - swirl.color[0])),\
+												swirl.color[1] + int( random()*(10 - swirl.color[1])),\
+												swirl.color[2] + int( random()*(50 - swirl.color[2])))
+
 
 							swirl.pulse_radius()
-						else:
-							swirl.move_circle(radius_mod=abs(int(1.2 - delta_level)))	
+						else: #good case
+							swirl.move_circle(radius_mod=abs(int(1+delta_level)))	
+							if index%3 == 0:	
+								swirl.color = (swirl.color[0] + int( random()*(205 - swirl.color[0])),\
+												swirl.color[1] + int( random()*(127 - swirl.color[1])),\
+												swirl.color[2] + int( random()*(50 - swirl.color[2])))
+							else:
+								swirl.color = (swirl.color[0] + int( random()*(255 - swirl.color[0])),\
+												swirl.color[1] + int( random()*(127 - swirl.color[1])),\
+												swirl.color[2] + int( random()*(0 - swirl.color[2])))
+
 							swirl.pulse_radius()
 							swirl.pulse_radius()
 							swirl.pulse_radius()
-					elif otions.alpha:
-						swirl.move_cirlce(radius_mod=alpha_level)
+							swirl.pulse_radius()
+							swirl.pulse_radius()
+
+							if options.alpha and abs(alpha_level - delta_level) > 5: #ideal
+								swirl.move_circle(radius_mod=abs(int(alpha_level)))	
+								swirl.color = (swirl.color[0] + int( alpha_level*(255 - swirl.color[0])),\
+													swirl.color[1] + int( alpha_leve*(223 - swirl.color[1])),\
+													swirl.color[1] + int( alpha_level*(0 - swirl.color[2])))
+
+					#elif otions.alpha:
+					#	swirl.move_cirlce(radius_mod=alpha_level)
+					#	swirl.pulse_radius()
 				
 				swirl.pulse_radius()
-				if swirl.r > 350:
+				if swirl.r > 400:
 						swirl.r = int(swirl.r*int(0.1 + random()))
 				swirl.draw_swirl(screen)
 		else:
