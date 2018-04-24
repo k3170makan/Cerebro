@@ -54,7 +54,13 @@ The Cerebro Animation I've included here is merely meant as a template
 for the kind of stuff you can do with the 3 technologies here. The core
 idea of Cerebro is that you are able to easily plugin in and script your
 own visualations (and physical actuations - that will come later ;). But
- if you're interested in using the stock animation then here's how it works:
+ if you're interested in using the stock animation then here's how it works.
+If you are in a non-relaxed state the mandala will look like this or disappear completely:
+![alt text](https://raw.githubusercontent.com/k3170makan/Cerebro/master/low_alpha1.png "low alpha")
+
+When you are very relaxed and maintain this state for long enough it will
+go through a couple of transitions in color and speed and eventually 
+turn gold! Good luck and relax its easy :)!
 
 ####Cerbro Swirl Actuation tutorial
 - finish later: simple advice is relax mediate and take little breaks here
