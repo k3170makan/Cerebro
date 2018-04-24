@@ -26,7 +26,7 @@ the mind muse
 2. Run it here's an example of a simple configuration that will use your alpha and delta waves to actuate - other modes have not been implemented yet
 
 		```
-			./Cerebro_dreamlib.py --alpha --delta --port 5000 --sprits 250
+			./Cerebro_dreamlib.py --alpha --delta --port 5000 --sprites 250
 		```
 This will spin up a Cerebro instance that hosts a UDP server on
 port 5000 for data from the muse monitor app (this app follows the
