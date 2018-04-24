@@ -1,5 +1,5 @@
 # Cerebro : PROJECT IN PROGRESS
-![alt text] (https://github.com/k3170makan/Cerebro/blob/master/loading_screen2.png "loading screen")
+![alt text](https://raw.githubusercontent.com/k3170makan/Cerebro/master/loading_screen2.png "loading screen")
 
 ##Brain art with raspberrypi and Mind Muse EEG
 Cerebro is a digital mandala generator. It generates a mandala using
